@@ -16,7 +16,8 @@ import java.util.List;
 public class Customized_standalone extends Base_test {
     @Test
     public void Submit_order() throws InterruptedException, IOException {
-        Landing_page landing_page =new Landing_page(driver);
+       Landing_page landing_page= Launch_Website();
+        //Landing_page landing_page =new Landing_page(driver);
         landing_page.Login("prashant123@test.com", "Prashant123!");
         Catelogue catelogue = new Catelogue(driver);
         List<WebElement> prod = catelogue.get_product();

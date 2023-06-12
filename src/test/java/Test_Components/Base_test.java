@@ -32,14 +32,14 @@ public class Base_test {
         }
     }
 
+
+
+    public Landing_page Launch_Website()
+    {
+        Landing_page landing_page = new Landing_page(driver);
+        landing_page.Goto();
+        return landing_page;
+    }
 }
-
-//    public Landing_page Launch_Website()
-//    {
-//        Landing_page landing_page = new Landing_page(driver);
-//        landing_page.Goto();
-//        return landing_page;
-//    }
-
 
 
