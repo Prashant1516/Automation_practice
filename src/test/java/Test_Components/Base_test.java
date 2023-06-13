@@ -3,6 +3,7 @@ package Test_Components;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 import java.io.FileInputStream;
@@ -15,7 +16,7 @@ public class Base_test {
 
     @BeforeClass
 
-    public WebDriver Invoke_driver() throws IOException {
+    public void Invoke_driver() throws IOException {
         Properties prop = new Properties();
         FileInputStream File = new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\java\\Resources\\Global.properties");
         prop.load(File);
@@ -28,8 +29,15 @@ public class Base_test {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 
         }
-        return driver;
+     //   return driver;
     }
+@AfterClass
+
+    public  void Teardown()
+{
+    driver.close();
+}
+
 
 
 
@@ -40,5 +48,6 @@ public class Base_test {
 //        return landing_page;
 //    }
 }
+
 
 

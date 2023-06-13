@@ -21,15 +21,25 @@ public class Landing_page extends Components {
     @FindBy(id="login")
     WebElement submit;
 
+    @FindBy(css = "[class*='flyInOut']")
+    WebElement error_text;
+
+
     public void Login(String Email, String Password)
     {
         useremail.sendKeys(Email);
         password.sendKeys(Password);
         submit.click();
     }
-//    public void Goto()
-//    {
-//        driver.get("https://rahulshettyacademy.com/client");
-//    }
+    public String Error_Message()
+    {
+        Explicit_wait();
+        return error_text.getText();
+
+    }
+    public void Goto()
+    {
+        driver.get("https://rahulshettyacademy.com/client");
+    }
 
 }
