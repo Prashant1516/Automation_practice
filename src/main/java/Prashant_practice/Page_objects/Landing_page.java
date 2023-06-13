@@ -21,7 +21,7 @@ public class Landing_page extends Components {
     @FindBy(id="login")
     WebElement submit;
 
-    @FindBy(css = "[class*='flyInOut']")
+    @FindBy(css="[class*='flyInOut']")
     WebElement error_text;
 
 
