@@ -16,8 +16,8 @@ import java.util.List;
 public class Customized_standalone extends Base_test {
     @Test
     public void Submit_order() throws InterruptedException, IOException {
-       //Landing_page landing_page= Launch_Website();
-        Landing_page landing_page =new Landing_page(driver);
+        //Landing_page landing_page= Launch_Website();
+        Landing_page landing_page = new Landing_page(driver);
         landing_page.Login("prashant123@test.com", "Prashant123!");
         Catelogue catelogue = new Catelogue(driver);
         List<WebElement> prod = catelogue.get_product();
@@ -34,6 +34,16 @@ public class Customized_standalone extends Base_test {
         Confirmation_page confirmationPage = new Confirmation_page(driver);
         String message = confirmationPage.Message_for_confirmation();
         Assert.assertTrue(message.equalsIgnoreCase("Thankyou for the order."));
+    }
+    @Test(dependsOnMethods = {"Submit_order"})
+
+    public void Orders_item_verification_test()
+    {
+        Landing_page landing_page = new Landing_page(driver);
+        landing_page.Login("prashant123@test.com", "Prashant123!");
+        Orders_page ordersPage= new Orders_page(driver);
+        Assert.assertTrue(ordersPage.Orders_page_items());
+    }
 
 
         //  wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("toast-container")));
@@ -58,5 +68,5 @@ public class Customized_standalone extends Base_test {
 //        Assert.assertTrue(message.equalsIgnoreCase("Thank you for the order."));
 
 
-    }
+
 }

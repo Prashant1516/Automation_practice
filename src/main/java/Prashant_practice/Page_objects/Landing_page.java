@@ -1,6 +1,7 @@
 package Prashant_practice.Page_objects;
 
 import Reusable_components.Components;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,6 +26,8 @@ public class Landing_page extends Components {
     WebElement error_text;
     @FindBy(xpath = "//div[contains(text(),'*Enter Valid Email')]")
     WebElement Error_on_nulll;
+    @FindBy(css = "[class='forgot-password-link']")
+    WebElement forget_pass;
 
 
     public void Login(String Email, String Password)
@@ -41,8 +44,12 @@ public class Landing_page extends Components {
     }
     public String Error_on_null()
     {
-        Explicit_wait();
+       // wait_to_appear(By.xpath("//div[contains(text(),'*Enter Valid Email')]"));
         return Error_on_nulll.getText();
+    }
+    public void Forget_pass_button()
+    {
+        forget_pass.click();
     }
     public void Goto()
     {

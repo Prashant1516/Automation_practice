@@ -3,10 +3,12 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="J:/Selenium/Frameworksparactice/MyFramewrok">
         <classes>
-            <class name="Tests.Customized_standalone">
-            </class>
-            <class name="Tests.Error_Msg">
-            </class>
+            <class name="Tests.Customized_standalone"/>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" name="Error validation test">
+        <classes>
+            <class name="Tests.Error_Msg"/>
         </classes>
     </test>
 </suite>

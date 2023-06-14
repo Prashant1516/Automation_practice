@@ -1,7 +1,6 @@
 package Prashant_practice.Page_objects;
 
 import Reusable_components.Components;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,6 +20,7 @@ public class Cart_page extends Components {
     List<WebElement> cart_list;
     @FindBy(css = ".totalRow button")
     WebElement checkout;
+
     public Boolean Verificaton_of_product(String product_name)
     {
       //  List<WebElement> cart= driver.findElements(By.cssSelector(".cartSection h3"));
@@ -33,4 +33,5 @@ public class Cart_page extends Components {
     {
         checkout.click();
     }
+
 }

@@ -4,7 +4,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,7 +16,7 @@ import java.util.Properties;
 public class Base_test {
    public static WebDriver driver;
 
-    @BeforeClass
+    @BeforeMethod
 
     public void Invoke_driver() throws IOException {
         Properties prop = new Properties();
@@ -31,7 +33,7 @@ public class Base_test {
         }
      //   return driver;
     }
-@AfterClass
+@AfterMethod
 
     public  void Teardown()
 {

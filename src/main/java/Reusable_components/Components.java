@@ -21,6 +21,9 @@ public class Components {
 
     @FindBy(xpath = "//button[@routerlink='/dashboard/cart']")
     WebElement Cart_button;
+    @FindBy(xpath = "//button[@routerlink='/dashboard/myorders']")
+    WebElement Orders_on_header;
+
 
     public void Click_cart_button() {
         Cart_button.click();
@@ -32,6 +35,12 @@ public class Components {
         wait.until(ExpectedConditions.visibilityOfElementLocated(findby));
 
     }
+
+    public Boolean Orders_page() {
+        Orders_on_header.click();
+        return null;
+    }
+
 
     public void Explicit_wait() {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
