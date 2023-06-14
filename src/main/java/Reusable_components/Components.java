@@ -36,9 +36,8 @@ public class Components {
 
     }
 
-    public Boolean Orders_page() {
+    public  void Orders_page_click() {
         Orders_on_header.click();
-        return null;
     }
 
 
