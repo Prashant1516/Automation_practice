@@ -17,4 +17,12 @@ public class Error_Msg extends Base_test {
         Assert.assertEquals("Incorrect email or password.", landing_page.Error_Message());
 
     }
+    @Test
+    public void Error_on_null_credential()
+    {
+        Landing_page landing_page = new Landing_page(driver);
+        landing_page.Login("","");
+        landing_page.Error_on_null();
+        Assert.assertEquals("*Enter Valid Email", landing_page.Error_on_null());
+    }
 }

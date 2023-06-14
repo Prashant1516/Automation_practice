@@ -23,6 +23,8 @@ public class Landing_page extends Components {
 
     @FindBy(css="[class*='flyInOut']")
     WebElement error_text;
+    @FindBy(xpath = "//div[contains(text(),'*Enter Valid Email')]")
+    WebElement Error_on_nulll;
 
 
     public void Login(String Email, String Password)
@@ -36,6 +38,11 @@ public class Landing_page extends Components {
         Explicit_wait();
         return error_text.getText();
 
+    }
+    public String Error_on_null()
+    {
+        Explicit_wait();
+        return Error_on_nulll.getText();
     }
     public void Goto()
     {
