@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class Error_Msg extends Base_test {
 
-    @Test
+    @Test(groups = "Error_handling")
 
     public void Error_validation()
     {

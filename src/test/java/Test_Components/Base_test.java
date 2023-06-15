@@ -16,7 +16,7 @@ import java.util.Properties;
 public class Base_test {
    public static WebDriver driver;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun =true)
 
     public void Invoke_driver() throws IOException {
         Properties prop = new Properties();
@@ -33,7 +33,7 @@ public class Base_test {
         }
      //   return driver;
     }
-@AfterMethod
+@AfterMethod(alwaysRun = true)
 
     public  void Teardown()
 {
