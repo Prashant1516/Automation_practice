@@ -2,23 +2,21 @@ package Tests;
 
 import Prashant_practice.Page_objects.*;
 import Test_Components.Base_test;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.time.Duration;
+import java.util.HashMap;
 import java.util.List;
 
 public class Customized_standalone extends Base_test {
-    @Test
-    public void Submit_order() throws InterruptedException, IOException {
+    @Test(dataProvider ="getData")
+    public void Submit_order(HashMap<String,String>input) throws InterruptedException, IOException {
         //Landing_page landing_page= Launch_Website();
         Landing_page landing_page = new Landing_page(driver);
-        landing_page.Login("prashant123@test.com", "Prashant123!");
+        landing_page.Login(input.get("email"), input.get("password"));
         Catelogue catelogue = new Catelogue(driver);
         List<WebElement> prod = catelogue.get_product();
         catelogue.add_product_to_cart();
@@ -44,6 +42,19 @@ public class Customized_standalone extends Base_test {
         Orders_page ordersPage= new Orders_page(driver);
         ordersPage.Orders_page_click();
         Assert.assertTrue(ordersPage.Orders_page_items());
+    }
+    @DataProvider
+    public Object[][] getData()
+    {
+        HashMap<String,String> map=new HashMap<String,String>();
+        map.put("email","prashant123@test.com");
+        map.put("password","Prashant123!");
+
+        HashMap<String,String> map1=new HashMap<String,String>();
+        map1.put("email","prashant1223@test.com");
+        map1.put("password","Prashan2t123!");
+        return new Object[][] {{map},{map1}};
+       // return new Object[][] {{"prashant123@test.com","Prashant123!"},{"prashantssss@dmail.com","12dddd"}};
     }
 
 
