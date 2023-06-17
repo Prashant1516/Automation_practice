@@ -35,10 +35,10 @@ public class Customized_standalone extends Base_test {
     }
     @Test(dependsOnMethods = {"Submit_order"})
 
-    public void Orders_item_verification_test()
+    public void Orders_item_verification_test(HashMap<String,String>input)
     {
         Landing_page landing_page = new Landing_page(driver);
-        landing_page.Login("prashant123@test.com", "Prashant123!");
+        landing_page.Login(input.get("email"), input.get("password"));
         Orders_page ordersPage= new Orders_page(driver);
         ordersPage.Orders_page_click();
         Assert.assertTrue(ordersPage.Orders_page_items());

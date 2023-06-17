@@ -1,22 +1,24 @@
 package Test_Components;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
 
 public class Base_test {
-   public static WebDriver driver;
+    public static WebDriver driver;
 
-    @BeforeMethod(alwaysRun =true)
+    @BeforeMethod(alwaysRun = true)
 
     public void Invoke_driver() throws IOException {
         Properties prop = new Properties();
@@ -31,16 +33,22 @@ public class Base_test {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 
         }
-     //   return driver;
+        //   return driver;
     }
-@AfterMethod(alwaysRun = true)
 
-    public  void Teardown()
-{
-    driver.close();
-}
+    @AfterMethod(alwaysRun = true)
 
+    public void Teardown() {
+        driver.close();
+    }
 
+    public String Take_screen_short(String testcase_name,WebDriver driver) throws IOException {
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        File source = ts.getScreenshotAs(OutputType.FILE);
+        File destination = new File(System.getProperty("user.dir") + "//reports//"+testcase_name + ".png");
+        FileUtils.copyFile(source, destination);
+        return System.getProperty("user.dir") + "//reports//"+ testcase_name + ".png";
+    }
 
 
 //    public Landing_page Launch_Website()
