@@ -18,7 +18,7 @@ public class Customized_standalone extends Base_test {
         Landing_page landing_page = new Landing_page(driver);
         landing_page.Login(input.get("email"), input.get("password"));
         Catelogue catelogue = new Catelogue(driver);
-        List<WebElement> prod = catelogue.get_product();
+       // List<WebElement> prod = catelogue.get_product();
         catelogue.add_product_to_cart();
         Thread.sleep(2000);
         catelogue.Click_cart_button();

@@ -2,12 +2,13 @@ package Tests;
 
 import Prashant_practice.Page_objects.Landing_page;
 import Test_Components.Base_test;
+import Test_Components.Retry;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Error_Msg extends Base_test {
 
-    @Test(groups = "Error_handling")
+    @Test(groups = "Error_handling",retryAnalyzer = Retry.class)
 
     public void Error_validation()
     {

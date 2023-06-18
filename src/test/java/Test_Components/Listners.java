@@ -16,10 +16,12 @@ public class Listners extends Base_test implements ITestListener {
     ExtentTest Test;
 
     ExtentReports extent = Extent_Reports.Get_report_obj();
+    ThreadLocal<ExtentTest> extent_thread= new ThreadLocal<ExtentTest>();
 
     @Override
     public void onTestStart(ITestResult result) {
         Test = extent.createTest(result.getMethod().getMethodName());
+        extent_thread.set(Test); // this creates unique thread id for every test.
     }
 
     @Override
@@ -29,7 +31,8 @@ public class Listners extends Base_test implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
-        Test.fail(result.getThrowable());
+        extent_thread.get().fail(result.getThrowable());
+
         try {
             driver = (WebDriver) result.getTestClass().getRealClass().getField("driver").get(result.getInstance());
         }
@@ -43,7 +46,7 @@ public class Listners extends Base_test implements ITestListener {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        Test.addScreenCaptureFromPath(File_path, result.getMethod().getMethodName());
+        extent_thread.get().addScreenCaptureFromPath(File_path, result.getMethod().getMethodName());
     }
 
 
